@@ -53,7 +53,7 @@ const { data, content } = parseFrontmatter(markdown);
 		"tags": ["markdown", "frontmatter", "parser"],
 		"categories": ["JavaScript", "Markdown", "Tools"]
 	},
-	"content": "\n# Heading\nThe document content is returned separately, without the frontmatter block."
+	"content": "# Heading\nThe document content is returned separately, without the frontmatter block."
 }
 ```
 
@@ -77,7 +77,6 @@ draft: false
 Parsed directly in the browser.`;
 
 	const { data, content } = mdFrontmatter(markdown);
-
 	console.log(data);
 	console.log(content);
 </script>
