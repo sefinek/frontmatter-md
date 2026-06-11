@@ -8,10 +8,17 @@ Lightweight YAML frontmatter parser for Markdown files.
 
 The package extracts metadata written at the beginning of a Markdown file between `---` delimiters and returns the remaining document content.
 
+Do you have questions or want to receive notifications about important changes or new features in my repositories?
+Join my [Discord server](https://discord.gg/S7NDzCzQTg)! If you do not use Discord, you can also open an issue on GitHub.
+
+If you like this repository, leave a star ⭐. Thank you!
+
+
 ## Installation
 ```bash
 npm install frontmatter-md
 ```
+
 
 ## Node.js usage
 ### Markdown
@@ -87,6 +94,7 @@ Parsed directly in the browser.`;
 </script>
 ```
 
+
 ## Supported values
 - strings, including quoted strings
 - numbers
@@ -94,6 +102,7 @@ Parsed directly in the browser.`;
 - YAML lists
 - inline arrays, e.g. `[foo, bar, baz]`
 - comments and empty lines inside the frontmatter block
+
 
 ## API
 ```js
@@ -111,12 +120,14 @@ The function returns an object:
 
 If the text does not contain valid frontmatter, `data` will be an empty object and `content` will remain unchanged.
 
+
 ## Development
 ```bash
 npm test
 npm run lint
 npm run build
 ```
+
 
 ## MIT License
 Copyright © 2024-2026 [Sefinek](https://sefinek.net)
