@@ -5,7 +5,6 @@
 [![license](https://img.shields.io/npm/l/frontmatter-md.svg)](./LICENSE)
 
 Lightweight YAML frontmatter parser for Markdown files.
-
 The package extracts metadata written at the beginning of a Markdown file between `---` delimiters and returns the remaining document content.
 
 Do you have questions or want to receive notifications about important changes or new features in my repositories?
