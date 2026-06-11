@@ -1,11 +1,11 @@
-# md-frontmatter
+# frontmatter-md
 Lightweight YAML frontmatter parser for Markdown files.
 
 The package extracts metadata written at the beginning of a Markdown file between `---` delimiters and returns the remaining document content.
 
 ## Installation
 ```bash
-npm install md-frontmatter
+npm install frontmatter-md
 ```
 
 ## Node.js usage
@@ -34,7 +34,7 @@ The document content is returned separately, without the frontmatter block.
 ### Example
 
 ```js
-const parseFrontmatter = require('md-frontmatter');
+const parseFrontmatter = require('frontmatter-md');
 
 const { data, content } = parseFrontmatter(markdown);
 ```
@@ -61,11 +61,11 @@ const { data, content } = parseFrontmatter(markdown);
 ## Browser usage
 
 ### URL
-https://cdn.jsdelivr.net/npm/md-frontmatter@1/dist/mdFrontmatter.min.js
+https://cdn.jsdelivr.net/npm/frontmatter-md@1/dist/mdFrontmatter.min.js
 
 ### Example
 ```html
-<script src="https://cdn.jsdelivr.net/npm/md-frontmatter@1/dist/mdFrontmatter.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/frontmatter-md@1/dist/mdFrontmatter.min.js"></script>
 <script>
 	const markdown = `---
 title: Browser example

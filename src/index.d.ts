@@ -3,7 +3,7 @@
  * Returns the extracted key-value data and the remaining content.
  *
  * @example
- * const parseFrontmatter = require('md-frontmatter');
+ * const parseFrontmatter = require('frontmatter-md');
  *
  * const { data, content } = parseFrontmatter('---\ntitle: Hello\n---\n# World');
  * // data    → { title: 'Hello' }

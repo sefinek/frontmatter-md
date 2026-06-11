@@ -1,5 +1,5 @@
 {
-  "name": "md-frontmatter",
+  "name": "frontmatter-md",
   "version": "1.0.0",
   "description": "Lightweight YAML frontmatter parser for Markdown files.",
   "keywords": [
@@ -15,11 +15,11 @@
   ],
   "homepage": "https://sefinek.net",
   "bugs": {
-    "url": "https://github.com/sefinek/md-frontmatter/issues"
+    "url": "https://github.com/sefinek/frontmatter-md/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sefinek/md-frontmatter.git"
+    "url": "git+https://github.com/sefinek/frontmatter-md.git"
   },
   "funding": {
     "type": "individual",
