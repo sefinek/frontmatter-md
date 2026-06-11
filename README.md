@@ -1,7 +1,7 @@
 # frontmatter-md
 [![npm version](https://img.shields.io/npm/v/frontmatter-md.svg)](https://www.npmjs.com/package/frontmatter-md)
 [![npm downloads](https://img.shields.io/npm/dm/frontmatter-md.svg)](https://www.npmjs.com/package/frontmatter-md)
-[![jsDelivr](https://data.jsdelivr.com/v1/package/npm/frontmatter-md/badge)](https://www.jsdelivr.com/package/npm/frontmatter-md)
+[![jsDelivr](https://img.shields.io/jsdelivr/npm/hm/frontmatter-md.svg?label=jsDelivr)](https://www.jsdelivr.com/package/npm/frontmatter-md)
 [![license](https://img.shields.io/npm/l/frontmatter-md.svg)](./LICENSE)
 
 Lightweight YAML frontmatter parser for Markdown files.
