@@ -4,40 +4,46 @@
 	<meta charset="utf-8">
 	<title>md-frontmatter browser example</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="https://cdn.jsdelivr.net/npm/md-frontmatter@1/dist/mdFrontmatter.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/md-frontmatter@1/dist/mdFrontmatter.min.js" defer></script>
 
 	<style>
 		* {
 			box-sizing: border-box;
 		}
 
+		:root {
+			--page-gap: 32px;
+			--panel-gap: 18px;
+			--editor-height: 560px;
+		}
+
 		body {
 			margin: 0;
-			font-family: Arial, sans-serif;
+			font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 			color: #e5e7eb;
 			background: #0f172a;
 		}
 
 		main {
-			width: min(1120px, calc(100% - 32px));
-			margin: 32px auto;
+			width: min(1760px, calc(100% - (var(--page-gap) * 2)));
+			margin: var(--page-gap) auto;
 		}
 
 		h1 {
 			margin: 0 0 6px;
-			font-size: 28px;
+			font-size: clamp(24px, 2vw, 32px);
 		}
 
 		.version {
 			margin: 0 0 16px;
 			color: #94a3b8;
-			font-size: 14px;
+			font-size: 16px;
 		}
 
 		.grid {
 			display: grid;
 			grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-			gap: 16px;
+			gap: var(--panel-gap);
 		}
 
 		.panel {
@@ -55,7 +61,6 @@
 		textarea,
 		pre {
 			width: 100%;
-			min-height: 360px;
 			margin: 0;
 			padding: 12px;
 			border: 1px solid #475569;
@@ -66,10 +71,12 @@
 		}
 
 		textarea {
+			min-height: var(--editor-height);
 			resize: vertical;
 		}
 
 		pre {
+			min-height: var(--editor-height);
 			overflow: auto;
 			white-space: pre-wrap;
 		}
@@ -88,9 +95,41 @@
 			background: #4338ca;
 		}
 
-		@media (max-width: 760px) {
+		button:focus-visible,
+		textarea:focus-visible {
+			outline: 2px solid #93c5fd;
+			outline-offset: 2px;
+		}
+
+		@media (max-width: 1024px) {
+			:root {
+				--page-gap: 24px;
+				--editor-height: 460px;
+			}
+
 			.grid {
 				grid-template-columns: 1fr;
+			}
+		}
+
+		@media (max-width: 560px) {
+			:root {
+				--page-gap: 16px;
+				--panel-gap: 12px;
+				--editor-height: 360px;
+			}
+
+			.panel {
+				padding: 12px;
+			}
+
+			textarea,
+			pre {
+				font-size: 13px;
+			}
+
+			button {
+				width: 100%;
 			}
 		}
 	</style>
@@ -102,7 +141,7 @@
 
 		<div class="grid">
 			<section class="panel">
-				<h2>Markdown</h2>
+				<h2><label for="markdown">Markdown</label></h2>
 				<textarea id="markdown">---
 title: Browser example
 description: Parse frontmatter without Node.js
