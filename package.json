@@ -1,0 +1,65 @@
+{
+  "name": "md-frontmatter",
+  "version": "1.0.0",
+  "description": "Lightweight parser for YAML frontmatter in markdown files.",
+  "keywords": [
+    "frontmatter",
+    "front-matter",
+    "markdown",
+    "md",
+    "parser",
+    "yaml",
+    "metadata"
+  ],
+  "homepage": "https://sefinek.net",
+  "bugs": {
+    "url": "https://github.com/sefinek/md-frontmatter/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sefinek/md-frontmatter.git"
+  },
+  "funding": {
+    "type": "individual",
+    "url": "https://sefinek.net/donate"
+  },
+  "license": "MIT",
+  "author": "Sefinek <contact@sefinek.net> (https://sefinek.net)",
+  "type": "commonjs",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "require": "./src/index.js"
+    }
+  },
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
+  "files": [
+    "dist",
+    "src",
+    "examples",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "lint": "eslint .",
+    "m": "ncu -u && npm install && npm update",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/jest": "^30.0.0",
+    "globals": "^17.6.0",
+    "jest": "^30.4.2",
+    "webpack": "^5.107.2",
+    "webpack-cli": "^7.0.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

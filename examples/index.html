@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>md-frontmatter browser example</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://cdn.jsdelivr.net/npm/md-frontmatter@1/dist/mdFrontmatter.min.js"></script>
+
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			margin: 0;
+			font-family: Arial, sans-serif;
+			color: #e5e7eb;
+			background: #0f172a;
+		}
+
+		main {
+			width: min(1120px, calc(100% - 32px));
+			margin: 32px auto;
+		}
+
+		h1 {
+			margin: 0 0 6px;
+			font-size: 28px;
+		}
+
+		.version {
+			margin: 0 0 16px;
+			color: #94a3b8;
+			font-size: 14px;
+		}
+
+		.grid {
+			display: grid;
+			grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+			gap: 16px;
+		}
+
+		.panel {
+			padding: 16px;
+			border: 1px solid #334155;
+			border-radius: 8px;
+			background: #111827;
+		}
+
+		.panel h2 {
+			margin: 0 0 12px;
+			font-size: 16px;
+		}
+
+		textarea,
+		pre {
+			width: 100%;
+			min-height: 360px;
+			margin: 0;
+			padding: 12px;
+			border: 1px solid #475569;
+			border-radius: 6px;
+			font: 14px/1.5 Consolas, "Courier New", monospace;
+			color: #dbeafe;
+			background: #020617;
+		}
+
+		textarea {
+			resize: vertical;
+		}
+
+		pre {
+			overflow: auto;
+			white-space: pre-wrap;
+		}
+
+		button {
+			margin-top: 12px;
+			padding: 10px 14px;
+			border: 0;
+			border-radius: 6px;
+			color: #ffffff;
+			background: #4f46e5;
+			cursor: pointer;
+		}
+
+		button:hover {
+			background: #4338ca;
+		}
+
+		@media (max-width: 760px) {
+			.grid {
+				grid-template-columns: 1fr;
+			}
+		}
+	</style>
+</head>
+<body>
+	<main>
+		<h1>md-frontmatter browser example</h1>
+		<p class="version">Version: <span id="version"></span></p>
+
+		<div class="grid">
+			<section class="panel">
+				<h2>Markdown</h2>
+				<textarea id="markdown">---
+title: Browser example
+description: Parse frontmatter without Node.js
+draft: false
+rating: 4.5
+tags: [html, browser, markdown]
+categories:
+  - JavaScript
+  - Frontmatter
+---
+
+# Browser example
+This content stays separate from the metadata.</textarea>
+				<button id="parse" type="button">Parse Markdown</button>
+			</section>
+
+			<section class="panel">
+				<h2>Parsed result</h2>
+				<pre id="output"></pre>
+			</section>
+		</div>
+	</main>
+
+	<script>
+		const markdownInput = document.querySelector('#markdown');
+		const output = document.querySelector('#output');
+		const parseButton = document.querySelector('#parse');
+		const version = document.querySelector('#version');
+
+		version.textContent = mdFrontmatter.version;
+
+		const render = () => {
+			const result = mdFrontmatter(markdownInput.value);
+			output.textContent = JSON.stringify(result, null, '\t');
+		};
+
+		parseButton.addEventListener('click', render);
+		markdownInput.addEventListener('input', render);
+		render();
+	</script>
+</body>
+</html>

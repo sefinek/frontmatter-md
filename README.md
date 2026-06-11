@@ -1,0 +1,118 @@
+# md-frontmatter
+Lightweight YAML frontmatter parser for Markdown files.
+
+The package extracts metadata written at the beginning of a Markdown file between `---` delimiters and returns the remaining document content.
+
+## Installation
+```bash
+npm install md-frontmatter
+```
+
+## Node.js usage
+### Markdown
+
+```md
+---
+title: "Hello World"
+description: Simple post showing supported data types
+author: Sefinek
+order: 3
+rating: 4.5
+draft: false
+featured: true
+tags: [markdown, frontmatter, parser]
+categories:
+  - JavaScript
+  - Markdown
+  - Tools
+---
+
+# Heading
+The document content is returned separately, without the frontmatter block.
+```
+
+### Example
+
+```js
+const parseFrontmatter = require('md-frontmatter');
+
+const { data, content } = parseFrontmatter(markdown);
+```
+
+### Output
+```json
+{
+	"data": {
+		"title": "Hello World",
+		"description": "Simple post showing supported data types",
+		"author": "Sefinek",
+		"order": 3,
+		"rating": 4.5,
+		"draft": false,
+		"featured": true,
+		"tags": ["markdown", "frontmatter", "parser"],
+		"categories": ["JavaScript", "Markdown", "Tools"]
+	},
+	"content": "\n# Heading\nThe document content is returned separately, without the frontmatter block."
+}
+```
+
+
+## Browser usage
+
+### URL
+https://cdn.jsdelivr.net/npm/md-frontmatter@1/dist/mdFrontmatter.min.js
+
+### Example
+```html
+<script src="https://cdn.jsdelivr.net/npm/md-frontmatter@1/dist/mdFrontmatter.min.js"></script>
+<script>
+	const markdown = `---
+title: Browser example
+tags: [html, browser, markdown]
+draft: false
+---
+
+# Browser example
+Parsed directly in the browser.`;
+
+	const { data, content } = mdFrontmatter(markdown);
+
+	console.log(data);
+	console.log(content);
+</script>
+```
+
+## Supported values
+- strings, including quoted strings
+- numbers
+- `true` and `false` values
+- YAML lists
+- inline arrays, e.g. `[foo, bar, baz]`
+- comments and empty lines inside the frontmatter block
+
+## API
+```js
+const result = parseFrontmatter(markdown);
+```
+
+The function returns an object:
+
+```js
+{
+	data: {},    // metadata from frontmatter
+	content: '' // Markdown content without frontmatter
+}
+```
+
+If the text does not contain valid frontmatter, `data` will be an empty object and `content` will remain unchanged.
+
+## Development
+```bash
+npm test
+npm run lint
+npm run build
+```
+
+## MIT License
+Copyright © 2024-2026 [Sefinek](https://sefinek.net)
