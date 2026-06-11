@@ -104,7 +104,7 @@ The function returns an object:
 
 ```js
 {
-	data: {},   // metadata from frontmatter
+	data: {},   // Metadata from frontmatter
 	content: '' // Markdown content without frontmatter
 }
 ```

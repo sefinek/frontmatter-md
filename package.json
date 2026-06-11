@@ -1,6 +1,6 @@
 {
   "name": "frontmatter-md",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lightweight YAML frontmatter parser for Markdown files.",
   "keywords": [
     "frontmatter",
