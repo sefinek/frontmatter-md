@@ -4,19 +4,42 @@ const FRONTMATTER_OPEN = /^---\r?\n/;
 const FRONTMATTER_CLOSE = /\n---\r?\n/;
 const LIST_ITEM = /^\s+-\s+(.*)/;
 const INLINE_ARRAY = /^\[(.+)]$/;
+const NUMBER = /^[+-]?(?:\d+\.\d+|\d+)(?:[eE][+-]?\d+)?$/;
+const DOUBLE_ESCAPE = /\\(.)/g;
+
+const unescapeDouble = str => str.replace(DOUBLE_ESCAPE, (_, ch) => {
+	switch (ch) {
+	case 'n': return '\n';
+	case 't': return '\t';
+	case 'r': return '\r';
+	case 'b': return '\b';
+	case 'f': return '\f';
+	default: return ch; // handles \" and \\
+	}
+});
 
 const parseValue = raw => {
-	const val = raw.replace(/^["']|["']$/g, '').trim();
+	const val = raw.trim();
+	const first = val[0];
+	const last = val[val.length - 1];
+	const isQuoted = val.length >= 2 && first === last && (first === '"' || first === '\'');
+
+	if (isQuoted) {
+		const inner = val.slice(1, -1);
+		return first === '"' ? unescapeDouble(inner) : inner.replace(/''/g, '\'');
+	}
+
 	if (val === 'true') return true;
 	if (val === 'false') return false;
-	if (val !== '' && !isNaN(val)) return Number(val);
+	if (val !== '' && NUMBER.test(val)) return Number(val);
 	return val;
 };
 
 const parseFrontmatter = raw => {
-	if (!FRONTMATTER_OPEN.test(raw)) return { data: {}, content: raw };
+	const openMatch = FRONTMATTER_OPEN.exec(raw);
+	if (!openMatch) return { data: {}, content: raw };
 
-	const startLen = raw.match(FRONTMATTER_OPEN)[0].length;
+	const startLen = openMatch[0].length;
 	const closeMatch = FRONTMATTER_CLOSE.exec(raw.slice(startLen));
 	if (!closeMatch) return { data: {}, content: raw };
 
@@ -28,7 +51,8 @@ const parseFrontmatter = raw => {
 
 	while (i < lines.length) {
 		const line = lines[i];
-		if (!line.trim() || line.trim().startsWith('#')) {
+		const trimmedLine = line.trim();
+		if (!trimmedLine || trimmedLine.startsWith('#')) {
 			i++;
 			continue;
 		}

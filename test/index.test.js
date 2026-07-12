@@ -59,6 +59,41 @@ describe('String values', () => {
 		const { data } = parseFrontmatter('---\ndesc: Hello: World\n---\n');
 		expect(data.desc).toBe('Hello: World');
 	});
+
+	it('preserves inner quotes in unquoted string', () => {
+		const { data } = parseFrontmatter('---\ntitle: Browser example0000 "xd"\n---\n');
+		expect(data.title).toBe('Browser example0000 "xd"');
+	});
+
+	it('preserves a single trailing quote in unquoted string', () => {
+		const { data } = parseFrontmatter('---\ntitle: Say "hi\n---\n');
+		expect(data.title).toBe('Say "hi');
+	});
+
+	it('keeps quoted "true" as a string, not boolean', () => {
+		const { data } = parseFrontmatter('---\nflag: "true"\n---\n');
+		expect(data.flag).toBe('true');
+	});
+
+	it('keeps quoted number as a string, not a number', () => {
+		const { data } = parseFrontmatter('---\ncode: "42"\n---\n');
+		expect(data.code).toBe('42');
+	});
+
+	it('unescapes escaped quotes and backslashes in double-quoted string', () => {
+		const { data } = parseFrontmatter('---\ntitle: "He said \\"hi\\" and left\\\\home"\n---\n');
+		expect(data.title).toBe('He said "hi" and left\\home');
+	});
+
+	it('unescapes doubled single-quotes in single-quoted string', () => {
+		const { data } = parseFrontmatter('---\ntitle: \'It\'\'s here\'\n---\n');
+		expect(data.title).toBe('It\'s here');
+	});
+
+	it('does not treat scientific notation as string', () => {
+		const { data } = parseFrontmatter('---\nvalue: 1e10\n---\n');
+		expect(data.value).toBe(1e10);
+	});
 });
 
 describe('Boolean values', () => {
