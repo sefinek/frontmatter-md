@@ -129,4 +129,4 @@ npm run build
 
 
 ## MIT License
-Copyright © 2024-2026 [Sefinek](https://sefinek.net)
+Copyright © 2026 [Sefinek](https://sefinek.net)
