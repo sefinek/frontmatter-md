@@ -45,7 +45,7 @@ The document content is returned separately, without the frontmatter block.
 ### Example
 
 ```js
-const parseFrontmatter = require('frontmatter-md');
+import parseFrontmatter from 'frontmatter-md';
 
 const { data, content } = parseFrontmatter(markdown);
 ```
@@ -72,11 +72,11 @@ const { data, content } = parseFrontmatter(markdown);
 ## Browser usage
 
 ### URL
-https://cdn.jsdelivr.net/npm/frontmatter-md@1/dist/mdFrontmatter.min.js
+https://cdn.jsdelivr.net/npm/frontmatter-md@2/dist/mdFrontmatter.min.js
 
 ### Example
 ```html
-<script src="https://cdn.jsdelivr.net/npm/frontmatter-md@1/dist/mdFrontmatter.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/frontmatter-md@2/dist/mdFrontmatter.min.js"></script>
 <script>
 	const markdown = `---
 title: Browser example

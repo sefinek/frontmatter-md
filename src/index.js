@@ -1,4 +1,4 @@
-const VERSION = '1.0.3'; // TODO: Keep this in sync with package.json for new releases.
+const VERSION = '2.0.0'; // TODO: Keep this in sync with package.json for new releases.
 
 const FRONTMATTER_OPEN = /^---\r?\n/;
 const FRONTMATTER_CLOSE = /\n---\r?\n/;
@@ -90,4 +90,5 @@ const parseFrontmatter = raw => {
 };
 
 parseFrontmatter.version = VERSION;
-module.exports = parseFrontmatter;
+export default parseFrontmatter;
+export { parseFrontmatter as 'module.exports' };

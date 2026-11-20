@@ -1,16 +1,17 @@
-const path = require('node:path');
+import path from 'node:path';
 
-module.exports = {
+export default {
 	entry: './src/index.js',
 	target: 'web',
 	mode: 'production',
 	output: {
-		path: path.resolve(__dirname, 'dist'),
+		path: path.resolve(import.meta.dirname, 'dist'),
 		filename: 'mdFrontmatter.min.js',
 		globalObject: 'this',
 		library: {
 			name: 'mdFrontmatter',
 			type: 'umd',
+			export: 'default',
 		},
 	},
 	devtool: 'source-map',
